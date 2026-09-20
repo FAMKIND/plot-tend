@@ -4,7 +4,7 @@ Strategy state for `plot-tend`, written by the planning role. See `plot/SKILL.md
 
 ## Status
 
-Live at github.com/FAMKIND/plot-tend — public, MIT, `main` at 83b0ef0 (2026-09-20).
+Live at github.com/FAMKIND/plot-tend — public, MIT. Established 2026-09-20.
 
 Both skills are installed by `install.sh` as symlinks from `~/.claude/skills/`
 and `~/.agents/skills/` into this repo, so edits here take effect live.
@@ -63,6 +63,9 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
 - **Match the pace to the person.** When the human said the answers were too
   much, dropping to one brief at a time with every copyable thing in a fenced
   block restored momentum immediately.
+- **A state file should not record its own repository's HEAD.** It is stale
+  the moment it is committed — writing PLOT.md necessarily moves the SHA it
+  just claimed. Record dates and decisions; let git record commits.
 
 ## Next action
 
