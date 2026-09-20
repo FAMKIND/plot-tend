@@ -75,7 +75,7 @@ Yours regardless of what the brief says.
 
 **6. Record.** Write what landed to `STATE.md`. Part of the task, not cleanup afterward. Undocumented work is work that will be redone.
 
-**7. Commit.** Scoped, with a message body carrying the reasoning where the reasoning is not obvious. Confirm a clean tree afterward.
+**7. Commit.** Scoped, with a message body carrying the reasoning where the reasoning is not obvious. If the brief carries an ID, add a `Brief: <ID>` trailer and echo that ID in your report. Confirm a clean tree afterward.
 
 ## Stop conditions
 

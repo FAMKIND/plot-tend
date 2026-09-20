@@ -80,6 +80,7 @@ A brief carries six things:
 
 Whoever acts on this cannot see your reasoning, your conversation, or anything you did not write down.
 
+- **Label every artifact with an ID and a destination.** Head each with an identifier and where it goes — `SEED-01 → Claude Code`, `LIME-03 → Zed, lime plot thread` — then one line on what it does. IDs are per project, sequential, never reused; a revision made before execution becomes `01b`. Any brief that commits must instruct a `Brief: <ID>` trailer in the commit message, so history records what caused each change.
 - **State your capability assumptions.** What must the acting agent be able to do — run commands, edit files, commit, reach the network? It can only tell you a plan is unworkable if you said what you assumed.
 - **State what you read and what you assumed.** Your assumptions are load-bearing and invisible unless declared.
 - **One change per brief, one brief per commit.** Bundling costs independent rollback.
