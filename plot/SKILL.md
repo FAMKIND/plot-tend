@@ -124,7 +124,7 @@ Then stop. Do not begin. Do not offer to begin.
 1. **Reflect** — write durable strategic learnings to `PLOT.md`. Never leave a lesson in conversation alone.
 2. **Steward** — one forward beat: name the next milestone, or question an assumption you have carried unexamined. Agency, not bookkeeping.
 3. **Sow** — the continuation note the next session reads first: unsent briefs verbatim, open threads, the immediate next action.
-4. **Gather** — `PLOT.md` needs to reach the repository. If you can commit that one file, do exactly that and nothing else. If you cannot, emit a scoped instruction — *commit this file as written, do not edit it* — and hand it off.
+4. **Gather** — `PLOT.md` needs to reach the repository. Emit a scoped instruction — *commit this file as written, do not edit it* — and hand it off; never commit it yourself, even when you could.
 
 Close early at a clean boundary if the remaining work will not fit. Never stop mid-draft with an uncaptured brief.
 

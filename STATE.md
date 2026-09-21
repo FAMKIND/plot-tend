@@ -17,6 +17,10 @@ directory being scanned for skills.
 Both skills load and run. `tend` was exercised end to end from Zed in the
 2026-09-20 session, `plot` from Claude Code.
 
+`plot/SKILL.md`'s Gather step no longer permits plot to commit
+`PLOT.md` itself; plot always hands the commit to tend. Resolved
+2026-09-20, closing a contradiction with L14 of the same file.
+
 ## Verified 2026-09-20
 
 Checked directly against the working tree, read-only:
