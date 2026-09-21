@@ -43,7 +43,12 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
   pre-commit hook installed by `install.sh`, since git hooks are not cloned
   and `install.sh` is the only thing every session already runs. Drafted as
   PT-08, revised pre-execution to PT-08b after a tend-side survey found a
-  `set -e`/`grep -c` defect; PT-08b is unsent as of this entry.
+  `set -e`/`grep -c` defect. **Landed in PT-08b.** The relay failure mode A1
+  leaves in place was accepted, not fixed: 3 degraded transmissions this
+  session plus 2 duplicate deliveries after the decision was made. A2 would
+  not have covered the two largest categories anyway — session reports and
+  command output, neither of which is a brief; only a brief-shaped payload
+  would have moved to a committed file under A2.
 - **`plot` emits three artifact types** — brief, decision surface, critique.
   Narrowing is cheap now and expensive once projects depend on it. Evidence so
   far favours keeping all three: the 2026-09-20 session used each, and the
@@ -67,105 +72,8 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
 
 ## Drafted-but-unsent briefs, verbatim
 
-**PT-08b → tend.** Add a scripted, hook-enforced check that the handoff
-contract table stays identical between `plot/SKILL.md` and `tend/SKILL.md`.
-Revision of PT-08, before execution, after a tend-side survey found a
-`set -e`/`grep -c` defect and three related robustness gaps. PT-08's text
-is superseded by this entry, not kept alongside it — git history over
-PLOT.md carries this commit if it's ever needed again.
-
-> **Goal.** A git pre-commit hook fails the commit if the six-part contract
-> table differs between the two `SKILL.md` files, or if either file no
-> longer contains exactly one markdown table (the assumption the check
-> relies on). The hook judges what is actually about to be committed (the
-> index), not whatever happens to sit in the working tree.
->
-> **Scope boundary.** Add one new file, `check-contract.sh`, at the repo
-> root (sibling to `install.sh`, same `#!/bin/sh` convention). Extend
-> `install.sh` additively to install a pre-commit hook that runs it — do not
-> alter `install.sh`'s existing skill-symlinking loop. No edits to either
-> `SKILL.md`'s content.
->
-> **The change.**
-> New file `check-contract.sh`, executable:
-> ```sh
-> #!/bin/sh
-> set -eu
->
-> for f in plot/SKILL.md tend/SKILL.md; do
->   n=$(git show ":$f" | grep -c '^|---' || true)
->   if [ "$n" -ne 1 ]; then
->     echo "check-contract: expected exactly one markdown table in $f, found $n — update this script" >&2
->     exit 1
->   fi
-> done
->
-> if [ "$(git show :plot/SKILL.md | grep '^|')" != "$(git show :tend/SKILL.md | grep '^|')" ]; then
->   echo "check-contract: handoff contract table differs between plot/SKILL.md and tend/SKILL.md" >&2
->   exit 1
-> fi
-> ```
-> Reading via `git show ":$f"` (the index) rather than `cat "$f"` (the
-> working tree) is the fix for the working-tree/index mismatch the survey
-> found: a partially staged file must be judged on what will actually land
-> in the commit. `|| true` on the `grep -c` pipeline is the fix for the
-> `set -e` defect: `grep -c` exits 1 on zero matches, which under bare
-> `set -e` would kill the script on that line, before the guard's own
-> "found 0" message ever prints — the zero-table case would fail silently,
-> exactly what the guard exists to prevent. `set -eu` (not `set -e`) matches
-> `install.sh`'s existing convention.
->
-> In `install.sh`, after the existing `for target in ...; done` loop and
-> before the final blank line, add — guarded so this whole block only runs
-> inside an actual git checkout:
-> ```sh
-> if [ -d "$REPO/.git" ]; then
->   HOOK="$REPO/.git/hooks/pre-commit"
->   if [ -L "$HOOK" ]; then
->     rm "$HOOK"
->   elif [ -e "$HOOK" ]; then
->     backup="$REPO/.git/hooks/pre-commit-backup-$(date +%Y%m%d%H%M%S)"
->     mv "$HOOK" "$backup"
->     echo "moved existing $HOOK to $backup"
->   fi
->   ln -s "$REPO/check-contract.sh" "$HOOK"
->   echo "linked $HOOK -> $REPO/check-contract.sh"
-> fi
-> ```
-> This mirrors the existing symlink-or-backup pattern at L10-18 exactly,
-> applied to one hook instead of a loop of two targets. Known, accepted
-> limitation from the survey: `[ -d "$REPO/.git" ]` is false when `.git` is
-> a file rather than a directory (worktrees, submodules) — fine for
-> plot-tend, which is a plain checkout; this silently skips hook install on
-> a repo like `dew` if it ever becomes a worktree. Not fixed here — out of
-> this brief's scope, and worktree-aware hook placement is genuinely more
-> involved than a single-repo build surface needs today.
->
-> **Verification.**
-> - `sh -n check-contract.sh` and `sh -n install.sh` — expect clean exit,
->   no output.
-> - `chmod +x check-contract.sh && git add check-contract.sh && git ls-files
->   -s check-contract.sh` — expect the mode field to read `100755`; a `644`
->   would give a fresh clone a hook it cannot execute.
-> - `./check-contract.sh; echo $?` from repo root on the current tree with
->   `check-contract.sh` staged — expect `0` (tables match today).
-> - `sh install.sh` then `ls -la .git/hooks/pre-commit` — expect a symlink
->   to `check-contract.sh` in the repo.
-> - Read (do not execute destructively against real files) the two failure
->   branches and confirm by inspection that a table-content mismatch and a
->   table-count-not-equal-to-1 mismatch each exit non-zero with a message on
->   stderr, including the zero-table case.
->
-> **Gate.** Yes — this is the repo's first build surface and an enforcement
-> mechanism; a human should read the script before it counts as done.
->
-> **Record step.** `STATE.md`: close gap 3 (contract enforcement), note
-> `install.sh` now also installs a pre-commit hook alongside symlinking
-> skills, and note the worktree/submodule limitation above, dated, no SHA.
->
-> Commit trailer: `Brief: PT-08b`.
-
-One change, one brief, one commit.
+Empty — PT-07 and PT-08b, this session's only two, have both landed. See
+the PT-06 entry under Settled for what each did.
 
 ## Facts worth not re-deriving
 
@@ -222,6 +130,13 @@ One change, one brief, one commit.
   zero-match case, usually the one most worth catching loudly, instead fails
   silently. Caught by tend's pre-execution survey of PT-08, not by running
   the script. Fix is `grep -c ... || true`, not switching off `set -e`.
+- **The `end` ritual has no step that retires a landed brief.** Sow captures
+  unsent briefs; nothing tells plot to remove one from "Drafted-but-unsent"
+  once it lands. PT-07 and PT-08b both sat there past landing in this
+  session, each needing a separate human prompt to notice and move them.
+  Twice in one session is a real cost, not a hypothetical one — worth a
+  `plot/SKILL.md` fix (a Gather sub-step: retire any brief that landed since
+  the last update), not yet made.
 
 ## Cross-project conventions
 
