@@ -77,6 +77,11 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
   committed, before it is pushed. Commit and push are for durability and for
   other machines, not for activation. A session already running keeps the text
   it loaded.
+- **Predict presence, not counts.** Three briefs in one session asserted an
+  exact number the planner had not computed — a line count, a commit SHA, a
+  grep total — and all three were wrong. Verification should check that
+  something is present, or give a floor, unless the number was actually
+  counted. A wrong expected value costs a stop-and-check every time.
 
 ## Cross-project conventions
 
