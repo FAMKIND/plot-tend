@@ -53,7 +53,7 @@ Yours regardless of what the brief says.
 
 ## The loop
 
-**1. Ground.** Read `GROUND.md`, then `STATE.md`, then `PLOT.md` if it exists. Check `git status` and recent history. Know where you are before you move.
+**1. Ground.** Read `PLOT.md`, then `STATE.md`. Check `git status` and recent history. Know where you are before you move.
 
 *Existing projects may use different filenames for these. The ownership discipline matters; the names do not.*
 
@@ -100,11 +100,11 @@ Small discipline, real effect. When you say "done," the human files the task awa
 
 ## Session boundaries
 
-**`start`** (alias **`rtb`**) — read `GROUND.md` → `STATE.md` → `PLOT.md`. Reconcile stated intent against what git actually shows: commit messages claiming more than their diffs contain, work described as in-flight that already landed, `STATE.md` trailing HEAD, uncommitted drift. Report as **Rose** (what shipped, grounded in git rather than in claims) / **Thorn** (drift, blockers, uncommitted work) / **Bud** (the single next action).
+**`start`** (alias **`rtb`**) — read `PLOT.md` → `STATE.md`. Reconcile stated intent against what git actually shows: commit messages claiming more than their diffs contain, work described as in-flight that already landed, `STATE.md` trailing HEAD, uncommitted drift. Report as **Rose** (what shipped, grounded in git rather than in claims) / **Thorn** (drift, blockers, uncommitted work) / **Bud** (the single next action).
 
 **`end`** — run in this order, **Gather last**, because Reflect and Sow both put down new material that Gather has to bring in. Gathering before the ground is planted leaves the new growth lying in the open.
 
-1. **Reflect** — write durable learnings where they belong: architecture and conventions to `GROUND.md`, code state to `STATE.md`. Never leave a lesson in chat alone.
+1. **Reflect** — write code state to `STATE.md`, and hand durable conventions to plot. Never leave a lesson in chat alone.
 2. **Steward** — one forward beat. Name the next milestone, or question an assumption you have been carrying. Agency, not just bookkeeping.
 3. **Sow** — the continuation note the next session reads first: what is in flight, what is open, the immediate next action.
 4. **Gather** — commit everything the prior three steps wrote. Scope each commit. Verify the tree is clean.
