@@ -13,7 +13,11 @@ and `~/.agents/skills/`, so editing a `SKILL.md` takes effect in every
 session started afterwards — before commit, before push. Any pre-existing
 directory is moved to a `skills-backup` sibling, never inside the
 directory being scanned for skills. It also installs `check-contract.sh`
-as a git pre-commit hook.
+as a git pre-commit hook, which refuses a commit if the handoff contract
+table differs between the two `SKILL.md` files. Hooks are not cloned, so
+this protects only machines that have run `install.sh`, and the
+installer skips worktrees and submodules where `.git` is a file rather
+than a directory.
 
 Both skills load and run. `tend` was exercised end to end from Zed in the
 2026-09-20 session, `plot` from Claude Code.
@@ -35,36 +39,16 @@ Checked directly against the working tree, read-only:
 - **`install.sh` touches nothing outside** `~/.claude/skills`,
   `~/.agents/skills`, and their `-backup` siblings. No chmod, no PATH
   changes, no binaries.
-- **`GROUND.md` is referenced at five sites**: `plot/SKILL.md` L26 and
-  L120, `tend/SKILL.md` L56, L103 and L107.
 
 Verify file copies with `cmp` or a hash, never line counts. Two separate
 sessions have now asserted a wrong line count for a `SKILL.md`.
 
 ## Gaps
 
-1. **`GROUND.md` is referenced at five sites, but PT-03 made `AGENTS.md`
-   canonical.** Four are read instructions and substitute cleanly. The
-   fifth, `tend/SKILL.md` L107, is a *write* destination — repointing it
-   decides that `AGENTS.md` is a file agents write to, not only read.
-   That decision has not been made. Both skills carry an escape hatch
-   permitting other filenames, so this misdirects rather than breaks; it
-   cost two sessions a wasted lookup on 2026-09-20.
-2. **`plot-tend` has no `AGENTS.md`.** The repo defining the convention
-   does not yet follow it. Structure matters here, because whatever
-   lands becomes the template other FAMKIND repos copy.
-3. **Contract enforcement — closed 2026-09-20.** `check-contract.sh`
-   compares the contract table between the two `SKILL.md` files and
-   refuses the commit if they differ, or if either file stops having
-   exactly one markdown table. `install.sh` installs it as a git
-   pre-commit hook. Hooks are not cloned, so this protects only
-   machines that have run `install.sh`; the installer tests for a
-   `.git` directory, so it silently skips worktrees and submodules
-   where `.git` is a file.
-4. **Session rituals are duplicated.** `start` and `end` appear in both
+1. **Session rituals are duplicated.** `start` and `end` appear in both
    skills. PT-05 had to edit both files to make one change — the
    duplication cost arriving in practice rather than hypothetically.
-5. **PT-05's session-word gate has not passed in Zed.** In Claude Code,
+2. **PT-05's session-word gate has not passed in Zed.** In Claude Code,
    bare `rtb` loaded the skill unprompted. In Zed it did not: the first
    bare `rtb` went unrecognised and the skill loaded only when the word
    was repeated. Pass-on-retry is worse than a clean failure, because
@@ -80,10 +64,3 @@ is stale the moment it is committed.
 
 Strategy, settled decisions and cross-project conventions live in
 `PLOT.md`.
-
-## Next action
-
-Decide the sequencing left open on 2026-09-20: fix the five `GROUND.md`
-references here first, or correct `seed`'s `CLAUDE.md` first. The
-`GROUND.md` fix needs the L107 write-destination question answered before
-it can be executed.
