@@ -1,6 +1,6 @@
 ---
 name: tend
-description: Carries out a written change brief in a codebase — survey, edit, prove, gate, record, commit — with strict scope discipline and no architectural improvisation. Use when you have been handed a plan, brief, or phased prompt to execute, or when acting as the executing half of a plan/execute split. Requires a brief as input; where the brief is silent on a decision, this skill stops and asks rather than inventing one. Pairs with the `plot` skill, which produces briefs.
+description: Carries out a written change brief in a codebase — survey, edit, prove, gate, record, commit — with strict scope discipline and no architectural improvisation. Use when you have been handed a plan, brief, or phased prompt to execute, or when acting as the executing half of a plan/execute split. Requires a brief as input; where the brief is silent on a decision, this skill stops and asks rather than inventing one. Pairs with the `plot` skill, which produces briefs. Also triggered by the bare session words `start` (alias `rtb`) and `end`.
 ---
 
 # tend
@@ -100,7 +100,7 @@ Small discipline, real effect. When you say "done," the human files the task awa
 
 ## Session boundaries
 
-**`start`** — read `GROUND.md` → `STATE.md` → `PLOT.md`. Reconcile stated intent against what git actually shows: commit messages claiming more than their diffs contain, work described as in-flight that already landed, `STATE.md` trailing HEAD, uncommitted drift. Report as **Rose** (what shipped, grounded in git rather than in claims) / **Thorn** (drift, blockers, uncommitted work) / **Bud** (the single next action).
+**`start`** (alias **`rtb`**) — read `GROUND.md` → `STATE.md` → `PLOT.md`. Reconcile stated intent against what git actually shows: commit messages claiming more than their diffs contain, work described as in-flight that already landed, `STATE.md` trailing HEAD, uncommitted drift. Report as **Rose** (what shipped, grounded in git rather than in claims) / **Thorn** (drift, blockers, uncommitted work) / **Bud** (the single next action).
 
 **`end`** — run in this order, **Gather last**, because Reflect and Sow both put down new material that Gather has to bring in. Gathering before the ground is planted leaves the new growth lying in the open.
 

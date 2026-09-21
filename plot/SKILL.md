@@ -1,6 +1,6 @@
 ---
 name: plot
-description: Lays out work before any of it is built — surveys the real state, decides what goes where and why, and emits a self-contained artifact another agent can act on with no shared memory. Produces one of three things: an execution brief, a decision surface with trade-offs, or a critique that may conclude no work is needed. Use when scoping non-trivial work, choosing between approaches, responding to a cross-project request, or maintaining strategic continuity across sessions. Stops at the handoff; never executes. Pairs with the `tend` skill, which carries briefs out.
+description: Lays out work before any of it is built — surveys the real state, decides what goes where and why, and emits a self-contained artifact another agent can act on with no shared memory. Produces one of three things: an execution brief, a decision surface with trade-offs, or a critique that may conclude no work is needed. Use when scoping non-trivial work, choosing between approaches, responding to a cross-project request, or maintaining strategic continuity across sessions. Stops at the handoff; never executes. Pairs with the `tend` skill, which carries briefs out. Also triggered by the bare session words `start` (alias `rtb`) and `end`.
 ---
 
 # plot
@@ -117,7 +117,7 @@ Then stop. Do not begin. Do not offer to begin.
 
 ## Session boundaries
 
-**`start`** — read `GROUND.md` → `STATE.md` → `PLOT.md`. Reconcile intent against reality as far as you can observe it, and name what you could not check. Report as **Rose** (where things actually stand) / **Thorn** (drift, blockers, open decisions) / **Bud** (the single next action).
+**`start`** (alias **`rtb`**) — read `GROUND.md` → `STATE.md` → `PLOT.md`. Reconcile intent against reality as far as you can observe it, and name what you could not check. Report as **Rose** (where things actually stand) / **Thorn** (drift, blockers, open decisions) / **Bud** (the single next action).
 
 **`end`** — run in this order, **Gather last**, because Reflect and Sow both put down new material that Gather has to bring in. Gathering before the ground is planted leaves the new growth lying in the open.
 
