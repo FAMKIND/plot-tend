@@ -78,7 +78,28 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
   other machines, not for activation. A session already running keeps the text
   it loaded.
 
+## Cross-project conventions
+
+Decided 2026-09-20; these apply to every FAMKIND repository.
+
+- **`AGENTS.md` is the canonical ground file**, not `GROUND.md`. Zed reads it
+  natively and the name is vendor-neutral, which matters for public repos.
+  `CLAUDE.md` shrinks to a one-line pointer at it. `STATE.md` keeps its name.
+  `plot/SKILL.md` permits this explicitly — the ownership discipline matters,
+  the filenames do not.
+- **Public repositories must not reference private or internal work by name.**
+- **`STATE.md` holds build status and gaps; READMEs stay usage-facing.** The
+  two must never duplicate each other, or they drift.
+
+Repo status at time of writing: `seed` and `dew` are established and healthy
+but carry no ground files yet, and seed's `CLAUDE.md` currently describes a
+Next.js/TypeScript/Storybook stack that does not exist — correcting it is the
+prerequisite for everything else there. `lime` is a two-commit scaffold with
+no code, awaiting scoping decisions. Each repo's own `STATE.md` is the place
+for its detail; this section records only what crosses repos.
+
 ## Next action
 
-Decide whether to add the CI check for handoff-contract drift. It is the only
-open thread with a concrete, cheap implementation.
+Correct seed's `CLAUDE.md`, then add `AGENTS.md` and `STATE.md` to seed. It
+is the prerequisite for planning work in any FAM repo, because an agent
+grounding on today's file plans against a stack that is not there.
