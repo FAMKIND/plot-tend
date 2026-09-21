@@ -12,7 +12,8 @@ Two skills, `plot` and `tend`, plus `install.sh` and docs. Public, MIT.
 and `~/.agents/skills/`, so editing a `SKILL.md` takes effect in every
 session started afterwards — before commit, before push. Any pre-existing
 directory is moved to a `skills-backup` sibling, never inside the
-directory being scanned for skills.
+directory being scanned for skills. It also installs `check-contract.sh`
+as a git pre-commit hook.
 
 Both skills load and run. `tend` was exercised end to end from Zed in the
 2026-09-20 session, `plot` from Claude Code.
@@ -52,9 +53,14 @@ sessions have now asserted a wrong line count for a `SKILL.md`.
 2. **`plot-tend` has no `AGENTS.md`.** The repo defining the convention
    does not yet follow it. Structure matters here, because whatever
    lands becomes the template other FAMKIND repos copy.
-3. **The shared contract has no enforcement.** Identical today, checked
-   by hand. CI diffing the table block between the two files is the
-   obvious candidate.
+3. **Contract enforcement — closed 2026-09-20.** `check-contract.sh`
+   compares the contract table between the two `SKILL.md` files and
+   refuses the commit if they differ, or if either file stops having
+   exactly one markdown table. `install.sh` installs it as a git
+   pre-commit hook. Hooks are not cloned, so this protects only
+   machines that have run `install.sh`; the installer tests for a
+   `.git` directory, so it silently skips worktrees and submodules
+   where `.git` is a file.
 4. **Session rituals are duplicated.** `start` and `end` appear in both
    skills. PT-05 had to edit both files to make one change — the
    duplication cost arriving in practice rather than hypothetically.
