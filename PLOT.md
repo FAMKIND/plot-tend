@@ -53,6 +53,13 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
   Narrowing is cheap now and expensive once projects depend on it. Evidence so
   far favours keeping all three: the 2026-09-20 session used each, and the
   boundaries held.
+- **PT-09 decided 2026-09-20: two notebooks, not four.** `PLOT.md` is
+  plot's; `TEND.md` is tend's. No `GROUND.md`, no `AGENTS.md`, no
+  `STATE.md`. Every grounding ritual is the same two reads — `PLOT.md`,
+  then `TEND.md`. This reverses PT-03, which had made `AGENTS.md`
+  canonical and kept `STATE.md`'s name. The reason is teachability: the
+  method is being introduced to non-technical people, and "two roles,
+  two notebooks, named after themselves" needs no explanation.
 
 ## Open threads
 
@@ -60,15 +67,6 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
   each scoped to what that role can do. Defaulted, never decided. Watch for
   the two copies drifting. Same shape of problem as the contract table PT-08
   addresses; not folded in — a separate decision, not yet made.
-- **`tend/SKILL.md` L107: does `AGENTS.md` get written to, or only read?**
-  Smaller and unrelated to PT-06, still open. `GROUND.md` is referenced at
-  five sites; PT-03 made `AGENTS.md` canonical but only settled the four read
-  sites. L107 is a *write* destination. Options on the table: repoint it
-  outright (agents write to `AGENTS.md`); repoint it but have tend propose
-  the addition rather than write it directly; or drop the destination
-  entirely. Evidence against dropping: this session's own environment
-  lessons (network access asymmetry, mtimes, the anonymous-404 case) had
-  nowhere to land without it.
 
 ## Drafted-but-unsent briefs, verbatim
 
@@ -137,16 +135,30 @@ the PT-06 entry under Settled for what each did.
   Twice in one session is a real cost, not a hypothetical one — worth a
   `plot/SKILL.md` fix (a Gather sub-step: retire any brief that landed since
   the last update), not yet made.
+- **An unrecorded decision is not a decision.** plot issued three briefs
+  from a choice made in chat and never written to `PLOT.md`. tend
+  grounded on `PLOT.md`, found it contradicted the brief, and stopped —
+  the survey step working as designed. Record the decision before
+  briefing against it.
+- **Roles follow capability, not which skill file loaded.** A chat agent
+  cannot commit or run a test suite; a terminal agent can. The chat
+  agent is always plot, the terminal agent always tend, whatever `rtb`
+  loads. A whole session ran with the labels swapped because Zed
+  surfaced `tend` and nobody questioned it.
+- **Explain before you hand off.** A copyable block with no
+  plain-language summary turns the human into a courier rather than a
+  checkpoint, which removes the only thing the plot/tend split buys.
+  Lead with what the change does, why it matters, and what to look at
+  when it comes back. Keep blocks readable without horizontal
+  scrolling. Caught because the human stopped the work to say so.
 
 ## Cross-project conventions
 
 Decided 2026-09-20; these apply to every FAMKIND repository.
 
-- **`AGENTS.md` is the canonical ground file**, not `GROUND.md`. Zed reads it
-  natively and the name is vendor-neutral, which matters for public repos.
-  `CLAUDE.md` shrinks to a one-line pointer at it. `STATE.md` keeps its name.
-  `plot/SKILL.md` permits this explicitly — the ownership discipline matters,
-  the filenames do not.
+- **Two notebooks per repo: `PLOT.md` and `TEND.md`.** Named after the
+  role that writes them. `CLAUDE.md`, where it exists, shrinks to a
+  one-line pointer at `PLOT.md`.
 - **Public repositories must not reference private or internal work by name.**
 - **`STATE.md` holds build status and gaps; READMEs stay usage-facing.** The
   two must never duplicate each other, or they drift.
@@ -160,6 +172,4 @@ for its detail; this section records only what crosses repos.
 
 ## Next action
 
-Correct seed's `CLAUDE.md`, then add `AGENTS.md` and `STATE.md` to seed. It
-is the prerequisite for planning work in any FAM repo, because an agent
-grounding on today's file plans against a stack that is not there.
+Rename `STATE.md` to `TEND.md`. Then lime.
