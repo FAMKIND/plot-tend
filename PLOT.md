@@ -19,6 +19,11 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
 - **Provenance.** Both skills were split from the retired `wheel-kiln` bundle.
   wheel-kiln is reference material only — not methodology, not to be
   reinstalled. It stays on disk because other local projects reference it.
+- **Artifacts carry an ID and a destination.** Every emitted brief or message
+  is headed `PROJECT-NN → destination` with one line on what it does, and any
+  brief that commits records `Brief: PROJECT-NN` as a commit trailer. IDs are
+  per project, sequential, never reused; a revision made before execution
+  becomes `01b`. Landed in PT-01.
 
 ## Open threads
 
@@ -66,6 +71,12 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
 - **A state file should not record its own repository's HEAD.** It is stale
   the moment it is committed — writing PLOT.md necessarily moves the SHA it
   just claimed. Record dates and decisions; let git record commits.
+- **Installed skills go live on save, not on commit.** `install.sh` symlinks
+  `~/.claude/skills/` and `~/.agents/skills/` at this working tree, so editing
+  a SKILL.md changes every session started afterwards — before it is
+  committed, before it is pushed. Commit and push are for durability and for
+  other machines, not for activation. A session already running keeps the text
+  it loaded.
 
 ## Next action
 
