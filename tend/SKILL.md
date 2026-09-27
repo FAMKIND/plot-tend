@@ -100,7 +100,7 @@ Small discipline, real effect. When you say "done," the human files the task awa
 
 ## Session boundaries
 
-**`start`** (alias **`rtb`**) — read `PLOT.md` → `TEND.md`. Reconcile stated intent against what git actually shows: commit messages claiming more than their diffs contain, work described as in-flight that already landed, `TEND.md` trailing HEAD, uncommitted drift. Report as **Rose** (what shipped, grounded in git rather than in claims) / **Thorn** (drift, blockers, uncommitted work) / **Bud** (the single next action).
+**`start`** (alias **`rtb`**) — read `PLOT.md` → `TEND.md`. Reconcile stated intent against what git actually shows: commit messages claiming more than their diffs contain, work described as in-flight that already landed, `TEND.md` trailing HEAD, uncommitted drift. Report as **Rose** (what shipped, grounded in git rather than in claims) / **Thorn** (drift, blockers, uncommitted work) / **Bud** (the single next action). Open the report by naming your role: *this session is tend.* A session keeps its role for its whole life. When work needs a plan or a decision, hand it to a `plot` session rather than drafting a brief you would then carry out yourself.
 
 **`end`** — run in this order, **Gather last**, because Reflect and Sow both put down new material that Gather has to bring in. Gathering before the ground is planted leaves the new growth lying in the open.
 

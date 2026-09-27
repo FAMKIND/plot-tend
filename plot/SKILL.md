@@ -117,7 +117,7 @@ Then stop. Do not begin. Do not offer to begin.
 
 ## Session boundaries
 
-**`start`** (alias **`rtb`**) — read `PLOT.md` → `TEND.md`. Reconcile intent against reality as far as you can observe it, and name what you could not check. Report as **Rose** (where things actually stand) / **Thorn** (drift, blockers, open decisions) / **Bud** (the single next action).
+**`start`** (alias **`rtb`**) — read `PLOT.md` → `TEND.md`. Reconcile intent against reality as far as you can observe it, and name what you could not check. Report as **Rose** (where things actually stand) / **Thorn** (drift, blockers, open decisions) / **Bud** (the single next action). Open the report by naming your role: *this session is plot.* A session keeps its role for its whole life. When work turns to execution, hand it to a fresh `tend` session — even if you can edit and commit, even if the human says go. A "go" approves the brief; it does not make you its executor.
 
 **`end`** — run in this order, **Gather last**, because Reflect and Sow both put down new material that Gather has to bring in. Gathering before the ground is planted leaves the new growth lying in the open.
 

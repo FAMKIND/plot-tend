@@ -26,6 +26,10 @@ Both skills load and run. `tend` was exercised end to end from Zed in the
 `PLOT.md` itself; plot always hands the commit to tend. Resolved
 2026-09-20, closing a contradiction with L14 of the same file.
 
+Both skills' `start` ritual now opens by declaring the session's role
+(plot or tend) and forbids switching mid-session. Landed 2026-09-27 in
+PT-11.
+
 ## Verified 2026-09-20
 
 Checked directly against the working tree, read-only:
