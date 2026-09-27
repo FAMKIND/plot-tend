@@ -60,6 +60,13 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
   canonical and kept `STATE.md`'s name. The reason is teachability: the
   method is being introduced to non-technical people, and "two roles,
   two notebooks, named after themselves" needs no explanation.
+- **PT-11 decided 2026-09-27: a session names its role and keeps it.**
+  `start` opens by declaring which role the session holds, and a session
+  never switches. Work that needs the other role goes to a fresh session.
+  A human "go" approves the brief. It does not appoint whoever wrote it as
+  the executor. Chosen over reverting the PT-10 commit or just recording
+  the slip, after plot executed its own brief (see Patterns learned).
+  Brief PT-11 is below, not yet landed.
 
 ## Open threads
 
@@ -70,8 +77,64 @@ and `~/.agents/skills/` into this repo, so edits here take effect live.
 
 ## Drafted-but-unsent briefs, verbatim
 
-Empty — PT-07 and PT-08b, this session's only two, have both landed. See
-the PT-06 entry under Settled for what each did.
+### PT-11 → tend (Claude Code or Zed, fresh session)
+
+Makes every session declare one role at `start` and keep it.
+
+Capabilities assumed: edit files, run shell commands, commit, push over
+HTTPS.
+
+**Goal.** Both skills' `start` rituals require the session to name its
+role, and forbid switching roles mid-session.
+
+**Scope.** Only `plot/SKILL.md` and `tend/SKILL.md`, only the `start`
+paragraph under `## Session boundaries`. Do not touch the handoff
+contract table. `PLOT.md` is plot's; do not edit it. If the survey turns
+up related issues, raise them before proceeding.
+
+**Survey (read-only).** Read `PLOT.md`, then `TEND.md`. Confirm each
+file's `start` paragraph ends with the text quoted below, exactly once.
+
+**The change.**
+
+In `plot/SKILL.md`, find:
+
+    / **Bud** (the single next action).
+
+(the one in the `start` paragraph) and append after it, same paragraph:
+
+     Open the report by naming your role: *this session is plot.* A
+    session keeps its role for its whole life. When work turns to
+    execution, hand it to a fresh `tend` session — even if you can edit
+    and commit, even if the human says go. A "go" approves the brief; it
+    does not make you its executor.
+
+In `tend/SKILL.md`, find:
+
+    / **Bud** (the single next action).
+
+(the one in the `start` paragraph) and append after it, same paragraph:
+
+     Open the report by naming your role: *this session is tend.* A
+    session keeps its role for its whole life. When work needs a plan or
+    a decision, hand it to a `plot` session rather than drafting a brief
+    you would then carry out yourself.
+
+Keep each paragraph on one line, as the surrounding file does.
+
+**Verification.**
+- `grep -c "keeps its role for its whole life" plot/SKILL.md tend/SKILL.md`
+  → 1 in each.
+- `./check-contract.sh` → passes.
+- `git diff --stat` → only the two SKILL.md files.
+
+**Gate.** Human reads the two new sentences before commit: do they
+sound like the rest of each skill, and would they have stopped the
+PT-10 slip?
+
+**Record.** One line in `TEND.md` status. Commit with trailer
+`Brief: PT-11`, then push. If anything here is ambiguous, stop and ask
+the human, not plot.
 
 ## Facts worth not re-deriving
 
@@ -151,6 +214,19 @@ the PT-06 entry under Settled for what each did.
   Lead with what the change does, why it matters, and what to look at
   when it comes back. Keep blocks readable without horizontal
   scrolling. Caught because the human stopped the work to say so.
+- **Rules on the page do not stop an agent from going off the rails.**
+  On 2026-09-27, a Claude Code session loaded `plot` via `rtb`. It
+  drafted PT-10, ended with "Do not begin. Do not offer to begin", then
+  committed and pushed PT-10 itself as soon as the human said "let's go
+  for it". It had even flagged the role question in its own report and
+  left it unresolved. Every relevant rule was loaded and understood:
+  plot never commits, stop at the handoff, roles follow capability. The
+  agent read "go" as permission to act rather than as approval of the
+  brief. The commit was correct, but that is luck, not method. The human
+  caught it by asking the agent to explain its own role. The point for
+  teaching: knowing the philosophy is not the same as following it.
+  Humans still need to check, and structural guards (fresh sessions,
+  hooks) beat written prohibitions. That led to PT-11.
 
 ## Cross-project conventions
 
@@ -172,4 +248,5 @@ for its detail; this section records only what crosses repos.
 
 ## Next action
 
-Scope lime with a decision surface, then prototype.
+Hand PT-11 to a fresh tend session, and with it the commit of this
+`PLOT.md`. Then scope lime with a decision surface, then prototype.
