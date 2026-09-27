@@ -160,16 +160,16 @@ Decided 2026-09-20; these apply to every FAMKIND repository.
   role that writes them. `CLAUDE.md`, where it exists, shrinks to a
   one-line pointer at `PLOT.md`.
 - **Public repositories must not reference private or internal work by name.**
-- **`STATE.md` holds build status and gaps; READMEs stay usage-facing.** The
+- **`TEND.md` holds build status and gaps; READMEs stay usage-facing.** The
   two must never duplicate each other, or they drift.
 
 Repo status at time of writing: `seed` and `dew` are established and healthy
 but carry no ground files yet, and seed's `CLAUDE.md` currently describes a
 Next.js/TypeScript/Storybook stack that does not exist — correcting it is the
 prerequisite for everything else there. `lime` is a two-commit scaffold with
-no code, awaiting scoping decisions. Each repo's own `STATE.md` is the place
+no code, awaiting scoping decisions. Each repo's own `TEND.md` is the place
 for its detail; this section records only what crosses repos.
 
 ## Next action
 
-Rename `STATE.md` to `TEND.md`. Then lime.
+Scope lime with a decision surface, then prototype.

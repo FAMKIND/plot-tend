@@ -36,7 +36,7 @@ A brief carries six things:
 - **The change is vague** → survey first, propose the exact change, confirm before applying.
 - **Verification missing** → derive your own, state it, show your working.
 - **Gate missing** → assume one is needed for anything with visible or generated output.
-- **Record step missing** → use the project's `STATE.md`; if absent, report and ask.
+- **Record step missing** → use the project's `TEND.md`; if absent, report and ask.
 
 A brief arriving as unstructured prose should be restated in this shape and confirmed before any work starts. That restatement takes a minute and catches most misreadings.
 
@@ -53,7 +53,7 @@ Yours regardless of what the brief says.
 
 ## The loop
 
-**1. Ground.** Read `PLOT.md`, then `STATE.md`. Check `git status` and recent history. Know where you are before you move.
+**1. Ground.** Read `PLOT.md`, then `TEND.md`. Check `git status` and recent history. Know where you are before you move.
 
 *Existing projects may use different filenames for these. The ownership discipline matters; the names do not.*
 
@@ -73,7 +73,7 @@ Yours regardless of what the brief says.
 
    Skip the gate when the change is purely structural with no rendered surface, when tests genuinely cover the behavior, or when a human has already authorized a batch to run unattended. Gates cost attention; spend them where they catch what verification cannot.
 
-**6. Record.** Write what landed to `STATE.md`. Part of the task, not cleanup afterward. Undocumented work is work that will be redone.
+**6. Record.** Write what landed to `TEND.md`. Part of the task, not cleanup afterward. Undocumented work is work that will be redone.
 
 **7. Commit.** Scoped, with a message body carrying the reasoning where the reasoning is not obvious. If the brief carries an ID, add a `Brief: <ID>` trailer and echo that ID in your report. Confirm a clean tree afterward.
 
@@ -100,11 +100,11 @@ Small discipline, real effect. When you say "done," the human files the task awa
 
 ## Session boundaries
 
-**`start`** (alias **`rtb`**) — read `PLOT.md` → `STATE.md`. Reconcile stated intent against what git actually shows: commit messages claiming more than their diffs contain, work described as in-flight that already landed, `STATE.md` trailing HEAD, uncommitted drift. Report as **Rose** (what shipped, grounded in git rather than in claims) / **Thorn** (drift, blockers, uncommitted work) / **Bud** (the single next action).
+**`start`** (alias **`rtb`**) — read `PLOT.md` → `TEND.md`. Reconcile stated intent against what git actually shows: commit messages claiming more than their diffs contain, work described as in-flight that already landed, `TEND.md` trailing HEAD, uncommitted drift. Report as **Rose** (what shipped, grounded in git rather than in claims) / **Thorn** (drift, blockers, uncommitted work) / **Bud** (the single next action).
 
 **`end`** — run in this order, **Gather last**, because Reflect and Sow both put down new material that Gather has to bring in. Gathering before the ground is planted leaves the new growth lying in the open.
 
-1. **Reflect** — write code state to `STATE.md`, and hand durable conventions to plot. Never leave a lesson in chat alone.
+1. **Reflect** — write code state to `TEND.md`, and hand durable conventions to plot. Never leave a lesson in chat alone.
 2. **Steward** — one forward beat. Name the next milestone, or question an assumption you have been carrying. Agency, not just bookkeeping.
 3. **Sow** — the continuation note the next session reads first: what is in flight, what is open, the immediate next action.
 4. **Gather** — commit everything the prior three steps wrote. Scope each commit. Verify the tree is clean.

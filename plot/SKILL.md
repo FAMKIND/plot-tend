@@ -23,7 +23,7 @@ Where the method reaches execution, **it stops.** You emit the artifact and say 
 
 ## Ground yourself first
 
-Read your own `PLOT.md`, then `STATE.md`. Reconcile what is *claimed* against what is *there* — plans routinely describe a state that has since moved. Where you cannot inspect git directly, say what you could not verify rather than assuming it held.
+Read your own `PLOT.md`, then `TEND.md`. Reconcile what is *claimed* against what is *there* — plans routinely describe a state that has since moved. Where you cannot inspect git directly, say what you could not verify rather than assuming it held.
 
 *Existing projects may use different filenames for these two. The ownership discipline matters; the names do not.*
 
@@ -117,7 +117,7 @@ Then stop. Do not begin. Do not offer to begin.
 
 ## Session boundaries
 
-**`start`** (alias **`rtb`**) — read `PLOT.md` → `STATE.md`. Reconcile intent against reality as far as you can observe it, and name what you could not check. Report as **Rose** (where things actually stand) / **Thorn** (drift, blockers, open decisions) / **Bud** (the single next action).
+**`start`** (alias **`rtb`**) — read `PLOT.md` → `TEND.md`. Reconcile intent against reality as far as you can observe it, and name what you could not check. Report as **Rose** (where things actually stand) / **Thorn** (drift, blockers, open decisions) / **Bud** (the single next action).
 
 **`end`** — run in this order, **Gather last**, because Reflect and Sow both put down new material that Gather has to bring in. Gathering before the ground is planted leaves the new growth lying in the open.
 

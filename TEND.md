@@ -1,4 +1,4 @@
-# STATE.md
+# TEND.md
 
 Build status and open gaps for `plot-tend`, written by the executing
 role. See `tend/SKILL.md`. Strategy and decisions live in `PLOT.md`;
